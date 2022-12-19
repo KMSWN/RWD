@@ -99,29 +99,89 @@ input[type="search"] {
   padding: var(--spacing-base) var(--spacing-lg);
 }
 
+/* 공통 메인 콘텐츠 섹션 제목 */
+[class*="__title"] {
+  margin-bottom: var(--spacing-base);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+[class*="__koTitle"] {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.sprite {
+  background: url(/images/sprite_main.png) no-repeat;
+  height: 3.75rem;
+  padding-left: 4rem;
+}
+
+.spriteBook.sprite {
+  background-position-Y: 0;
+}
+
+.spriteNews.sprite {
+  background-position-Y: -230px;
+}
+
+.spriteBoard.sprite {
+  background-position-Y: -115px;
+}
+
+.spriteFavorite.sprite {
+  background-position-Y: -345px;
+}
+
+.spriteTwitter.sprite {
+  background-position-Y: -460px;
+}
+
+.accentBook {
+  color: var(--green);
+}
+
+.accentNews {
+  color: var(--yellow);
+}
+
+.accentBoard {
+  color: var(--brown);
+}
+
+.accentFavorite {
+  color: var(--orange);
+}
+
+.accentTwitter {
+  color: var(--blue);
+}
+
+
 /* 공통 추천서적 */
 .book {
-  background-color: lightgreen;
+  grid-area: book;
 }
 
 /* 공통 새소식 */
 .news {
-  background-color: yellow;
+  grid-area: news;
 }
 
 /* 공통 게시판 */
 .board {
-  background-color: lightsalmon;
+  grid-area: board;
 }
 
 /* 공통 인기사이트 */
 .favorite {
-  background-color: aquamarine;
+  grid-area: favorite;
 }
 
 /* 공통 트위터 */
 .twitter {
-  background-color: burlywood;
+  grid-area: twitter;
 }
 
 
@@ -234,13 +294,14 @@ input[type="search"] {
 
   /* 모바일 메인 콘텐츠 */
   .appMain {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
-  }
-
-  /* 모바일 새소식 */
-  .news {
-    grid-area: 1/1/2/3;
+    grid-template-areas: 
+    "book"
+    "news"
+    "board"
+    "favorite"
+    "twitter";
   }
 }
 
@@ -302,34 +363,12 @@ input[type="search"] {
     max-width: var(--container-width);
     margin-left: auto;
     margin-right: auto;
-    display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-areas: 
       "news news news news news news news news news news news news"
       "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
       "book book book book . board board board board board board board";
   }
-
-  .news {
-    grid-area: news;
-  }
-
-  .book {
-    grid-area: book;
-  }
-
-  .board {
-    grid-area: board;
-  }
-
-  .twitter {
-    grid-area: twitter;
-  }
-
-  .favorite {
-    grid-area: favorite;
-  }
-
 }
 
 /* 고해상도 배경이미지 미디어쿼리 */
